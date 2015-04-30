@@ -2,6 +2,8 @@
 /**
  * Module dependencies.
  */
+process.env.NODE_ENV = 'production';
+
 var init = require('./config/init')(),
 	config = require('./config/config'),
 	mongoose = require('mongoose'),
@@ -27,7 +29,7 @@ var app = require('./config/express')(db);
 require('./config/passport')();
 
 // Start the app by listening on <port>
-app.listen(process.env.PORT);
+app.listen(config.port);
 
 // Expose app
 exports = module.exports = app;
