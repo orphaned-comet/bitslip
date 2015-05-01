@@ -33,7 +33,7 @@ module.exports = {
 	},
 	coinbase: {
 		clientID: process.env.COINBASE_ID || 'APP_ID',
-		clientSecret: process.env.COINBASE_SECRET || 'APP_SECRET',
+		clientSecret: process.env.COINBASE_SECRET || 'APP_SECRET'
 	},
 	mailer: {
 		from: process.env.MAILER_FROM || 'MAILER_FROM',
