@@ -54,4 +54,11 @@ module.exports = function(app) {
 
 	// Finish by binding the user middleware
 	app.param('userId', users.userByID);
-};
+
+
+	// NEW FEATURE
+	app.route('/cbredirect').get(function(req, res){
+		users.getCoinbaseToken(req, res);
+})
+}
+
