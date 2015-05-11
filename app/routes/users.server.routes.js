@@ -25,6 +25,11 @@ module.exports = function(app) {
 	app.route('/auth/signin').post(users.signin);
 	app.route('/auth/signout').get(users.signout);
 
+	// Setting up common redirect route to Coinbase Authentication
+	app.route('/cbcode').get(function(req,res,next){
+		res.redirect('https://sandbox.coinbase.com/sessions/oauth_signin?client_id=b6372a73732cd26fd06163b4a1ae66a390a4a8793131db27600e4f11568aac9b&meta%5Bsend_limit_amount%5D=50&redirect_uri=https://bitslip.herokuapp.com/cbredirect&response_type=code&scope=balance+send+transactions+user+reports');
+	});
+
 	// Finish by binding the user middleware
 	app.param('userId', users.userByID);
 

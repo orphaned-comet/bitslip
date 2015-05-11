@@ -10,10 +10,14 @@ directives.directive('autocomplete', ['$http', function($http) {
             source:function (request, response) {
                 var url = '/search_user/?term=' + request.term;
                 $http.get(url).success( function(data) {
+<<<<<<< HEAD
                     for(var i=0; i< data.length; i++){
                         scope.validUsernames.push(data[i].username);
                     }
                     console.log(scope.validUsernames);
+=======
+                    var list = data[0] ? data[0].username : undefined;
+>>>>>>> Refactored for proper routing on signup/signin
                     response(data);
                 });
             },

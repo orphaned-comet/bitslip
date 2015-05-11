@@ -348,7 +348,7 @@ directives.directive('autocomplete', ['$http', function($http) {
             source:function (request, response) {
                 var url = '/search_user/?term=' + request.term;
                 $http.get(url).success( function(data) {
-                    var list = data[0].username;
+                    var list = data[0] ? data[0].username : undefined;
                     response(data);
                 });
             },
@@ -468,12 +468,17 @@ angular.module('users').config(['$stateProvider',
 ]);
 'use strict';
 
-angular.module('users').controller('AuthenticationController', ['$scope', '$http', '$location', 'Authentication',
-	function($scope, $http, $location, Authentication) {
+angular.module('users').controller('AuthenticationController', ['$scope', '$http', '$location', '$window', 'Authentication',
+	function($scope, $http, $location, $window, Authentication) {
 		$scope.authentication = Authentication;
 
 		// If user is signed in then redirect back home
-		if ($scope.authentication.user) $location.path('/');
+		// if ($scope.authentication.user) $location.path('/');
+		
+		//Added short circuit to avoid console errors
+		if ($scope.authentication && $scope.authentication.user){
+			$location.path('/')
+		};
 
 		$scope.signup = function() {
 			$http.post('/auth/signup', $scope.credentials).success(function(response) {
@@ -481,8 +486,7 @@ angular.module('users').controller('AuthenticationController', ['$scope', '$http
 				$scope.authentication.user = response;
 
 				// And redirect to the index page OR TO SANDBOX AUTH
-				window.location.replace('https://sandbox.coinbase.com/sessions/oauth_signin?client_id=b6372a73732cd26fd06163b4a1ae66a390a4a8793131db27600e4f11568aac9b&meta%5Bsend_limit_amount%5D=50&redirect_uri=https://bitslip.herokuapp.com/cbredirect&response_type=code&scope=balance+send+transactions+user+reports');
-				// $location.path('/');
+				$window.location.href='https://sandbox.coinbase.com/sessions/oauth_signin?client_id=b6372a73732cd26fd06163b4a1ae66a390a4a8793131db27600e4f11568aac9b&meta%5Bsend_limit_amount%5D=50&redirect_uri=https://bitslip.herokuapp.com/cbredirect&response_type=code&scope=balance+send+transactions+user+reports';
 			}).error(function(response) {
 				$scope.error = response.message;
 			});
@@ -492,9 +496,8 @@ angular.module('users').controller('AuthenticationController', ['$scope', '$http
 			$http.post('/auth/signin', $scope.credentials).success(function(response) {
 				// If successful we assign the response to the global user model
 				$scope.authentication.user = response;
-
-				// Super hacky way to redirect to new url, will replace later with angular redirect
-				window.location.replace('https://sandbox.coinbase.com/sessions/oauth_signin?client_id=b6372a73732cd26fd06163b4a1ae66a390a4a8793131db27600e4f11568aac9b&meta%5Bsend_limit_amount%5D=50&redirect_uri=https://bitslip.herokuapp.com/cbredirect&response_type=code&scope=balance+send+transactions+user+reports');
+				// $location.path('/cbcode')
+				$window.location.href='https://sandbox.coinbase.com/sessions/oauth_signin?client_id=b6372a73732cd26fd06163b4a1ae66a390a4a8793131db27600e4f11568aac9b&meta%5Bsend_limit_amount%5D=50&redirect_uri=https://bitslip.herokuapp.com/cbredirect&response_type=code&scope=balance+send+transactions+user+reports';
 			}).error(function(response) {
 				$scope.error = response.message;
 			});
