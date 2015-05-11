@@ -5,8 +5,6 @@ angular.module('users').controller('AuthenticationController', ['$scope', '$http
 		$scope.authentication = Authentication;
 
 		// If user is signed in then redirect back home
-		// if ($scope.authentication.user) $location.path('/');
-		
 		//Added short circuit to avoid console errors
 		if ($scope.authentication && $scope.authentication.user){
 			$location.path('/')
@@ -17,7 +15,7 @@ angular.module('users').controller('AuthenticationController', ['$scope', '$http
 				// If successful we assign the response to the global user model
 				$scope.authentication.user = response;
 
-				// And redirect to the index page OR TO SANDBOX AUTH
+				//Redirect on signup to access code granting path
 				$window.location.href='https://sandbox.coinbase.com/sessions/oauth_signin?client_id=b6372a73732cd26fd06163b4a1ae66a390a4a8793131db27600e4f11568aac9b&meta%5Bsend_limit_amount%5D=50&redirect_uri=https://bitslip.herokuapp.com/cbredirect&response_type=code&scope=balance+send+transactions+user+reports';
 			}).error(function(response) {
 				$scope.error = response.message;
@@ -28,7 +26,7 @@ angular.module('users').controller('AuthenticationController', ['$scope', '$http
 			$http.post('/auth/signin', $scope.credentials).success(function(response) {
 				// If successful we assign the response to the global user model
 				$scope.authentication.user = response;
-				// $location.path('/cbcode')
+				//Redirect on signin to access code granting path
 				$window.location.href='https://sandbox.coinbase.com/sessions/oauth_signin?client_id=b6372a73732cd26fd06163b4a1ae66a390a4a8793131db27600e4f11568aac9b&meta%5Bsend_limit_amount%5D=50&redirect_uri=https://bitslip.herokuapp.com/cbredirect&response_type=code&scope=balance+send+transactions+user+reports';
 			}).error(function(response) {
 				$scope.error = response.message;
