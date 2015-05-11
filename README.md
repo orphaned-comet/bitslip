@@ -1,3 +1,4 @@
+[![Stories in Ready](https://badge.waffle.io/orphaned-comet/bitslip.png?label=ready&title=Ready)](https://waffle.io/orphaned-comet/bitslip)
 # Bitslip
 
 > A venmo-like application to send money with Bitcoin utilizing the Coinbase API
