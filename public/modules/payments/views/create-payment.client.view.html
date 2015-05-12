@@ -1,4 +1,6 @@
+
 <section data-ng-controller="PaymentsController">
+
 	<div class="page-header">
 		<h1>New Payment</h1>
 	</div>
@@ -6,7 +8,6 @@
 		<form name="paymentForm" class="form-horizontal-payment" data-ng-submit="create()" novalidate>
 			<fieldset>
 				<div class="form-group col-md-5" ng-class="{ 'has-error': paymentForm.recipient.$dirty && paymentForm.recipient.$invalid || !validateUsername() }">
-
 					<label class="control-label" for="recipient">Recipient (must be bitslip user)</label>
 					<div class="controls">
 						<input name="recipient" autocomplete type="text" data-ng-model="recipient"  id="recipient" class="form-control" placeholder="recipient" required >
@@ -39,7 +40,7 @@
 				<div class="col-md-10"</div>
 
 				<div class="form-group">
-					<input type="submit" class="btn btn-default">
+					<input type="submit" class="main-btn" style="margin: 0;">
 				</div>
 				<div data-ng-show="error" class="text-danger">
 					<strong data-ng-bind="error"></strong>
