@@ -12,3 +12,12 @@
 	right: 10px;
 	position: absolute;
 }
+
+.sign-form{
+  margin-top: 50px;
+}
+
+.form-group label{
+  font-family: helvetica;
+  font-weight: 100;
+}

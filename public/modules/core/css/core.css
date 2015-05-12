@@ -53,6 +53,7 @@
 
 .main-btn{
   /* Button Background: */
+  border: 0;
   margin: 10px 30px;
   display: inline-block;
   width: 125px;
@@ -131,4 +132,9 @@
   font-size: 35.25px;
   color: black;
   line-height: 43px;
+}
+
+
+.form-horizontal-payment{
+  padding: 10px;
 }

@@ -1,6 +1,6 @@
 <section class="row" data-ng-controller="AuthenticationController">
 
-	<div class="col-xs-offset-2 col-xs-8 col-md-offset-5 col-md-2">
+	<div class="col-xs-offset-2 col-xs-8 col-md-offset-5 col-md-2 sign-form">
 		<form name="userForm" data-ng-submit="signup()" class="signin form-horizontal" novalidate autocomplete="off">
 			<fieldset>
 				<div class="form-group">
@@ -28,7 +28,7 @@
 					<input type="text" id="phoneNumber" name="phoneNumber" class="form-control" data-ng-model="credentials.phoneNumber" placeholder="Phone Number" >
 				</div>
 				<div class="text-center form-group">
-					<button type="submit" class="btn btn-large btn-primary">Sign up</button>&nbsp; or&nbsp;
+					<button type="submit" class="main-btn">Sign up</button>&nbsp; or&nbsp;
 					<a href="/#!/signin" class="show-signup">Sign in</a>
 				</div>
 				<div data-ng-show="error" class="text-center text-danger">
