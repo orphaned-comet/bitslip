@@ -37,7 +37,7 @@
 
 .splash-welcome{
   padding-top: 100px;
-  background: url('../img/brand/BackgroundBlur.png') no-repeat center center fixed;
+  background: url('modules/core/img/brand/BackgroundBlur.png') no-repeat center center fixed;
   background-size: cover;
   width: 100%;
   height: auto;
